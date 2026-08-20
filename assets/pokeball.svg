@@ -1,0 +1,98 @@
+<svg
+    width="120"
+    height="120"
+    viewBox="0 0 120 120"
+    xmlns="http://www.w3.org/2000/svg"
+>
+
+<style>
+    .coin {
+        transform-origin: 60px 57px;
+        animation: flip 2.2s ease-in-out infinite;
+    }
+
+    @keyframes flip {
+        0% {
+            transform: scaleX(1);
+        }
+
+        25% {
+            transform: scaleX(0.12);
+        }
+
+        50% {
+            transform: scaleX(1);
+        }
+
+        75% {
+            transform: scaleX(0.12);
+        }
+
+        100% {
+            transform: scaleX(1);
+        }
+    }
+</style>
+
+<ellipse
+    cx="60"
+    cy="108"
+    rx="34"
+    ry="5"
+    fill="#000000"
+    opacity="0.2"
+/>
+
+<g class="coin">
+
+    <circle
+        cx="60"
+        cy="57"
+        r="43"
+        fill="#ffffff"
+        stroke="#171717"
+        stroke-width="6"
+    />
+
+    <path
+        d="M 18 57
+           A 42 42 0 0 1 102 57
+           Z"
+        fill="#ef4444"
+    />
+
+    <rect
+        x="18"
+        y="52"
+        width="84"
+        height="10"
+        fill="#171717"
+    />
+
+    <circle
+        cx="60"
+        cy="57"
+        r="14"
+        fill="#171717"
+    />
+
+    <circle
+        cx="60"
+        cy="57"
+        r="8"
+        fill="#ffffff"
+    />
+
+    <ellipse
+        cx="43"
+        cy="33"
+        rx="9"
+        ry="5"
+        fill="#ffffff"
+        opacity="0.45"
+        transform="rotate(-30 43 33)"
+    />
+
+</g>
+
+</svg>

@@ -1,4 +1,14 @@
-# 🎮 A wild Dylan appeared!
+<p align="center">
+  <img src="./assets/pokeball.svg" width="100" />
+</p>
+
+<h1 align="center">🎮 A wild Dylan appeared!</h1>
+
+<p align="center">
+  <b>Software Engineer • AI Builder • Side Quest Enthusiast</b>
+</p>
+
+<br>
 
 <p align="center">
   <img src="./assets/trainer-card.svg" width="800" />
@@ -12,12 +22,29 @@
   <img src="./assets/party-card.svg" width="800" />
 </p>
 
-| Project | Type | Status |
-|---|---|---|
-| [Chain Reaction](https://github.com/dylanflaum08/chain-reaction.git) | 🤖 AI / 📈 Finance | 🟢 Active |
-| Gesture Home Automation | 👁️ Computer Vision / IoT | 🟢 Active |
-| [Portfolio](https://dyfla.com) | ⚛️ Full-Stack Web | 🟢 Deployed |
-| Movie Predictor | 🧠 Machine Learning | ✅ Completed |
+<p align="center">
+  <a href="https://github.com/dylanflaum08/chain-reaction">
+    <img src="https://img.shields.io/badge/🤖_Chain_Reaction-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://www.tb-solutions.com/">
+    <img src="https://img.shields.io/badge/⚓_True_Bearing_Solutions-0066CC?style=for-the-badge" />
+  </a>
+  <a href="https://www.dyfla.com">
+    <img src="https://img.shields.io/badge/🌐_Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/dylanflaum08/movie-predictor">
+    <img src="https://img.shields.io/badge/🎬_Movie_Predictor-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://github.com/dylanflaum08/slothful-trading">
+    <img src="https://img.shields.io/badge/🦥_Slothful_Trading-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="https://github.com/dylanflaum08/portfolio">
+    <img src="https://img.shields.io/badge/💻_Portfolio_Source-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+</p>
 
 ---
 
@@ -28,6 +55,8 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
 
 ### Frameworks
 
@@ -68,12 +97,16 @@
 ## 🌎 Trainer Links
 
 <p align="center">
-
-[🌐 Portfolio](https://dyfla.com) • [💼 LinkedIn](YOUR_LINKEDIN_URL)
-
+  <a href="https://www.dyfla.com">
+    <img src="https://img.shields.io/badge/🌐_Portfolio-000000?style=for-the-badge" />
+  </a>
+  <a href="https://www.linkedin.com/in/dylan-flaum/">
+    <img src="https://img.shields.io/badge/💼_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+  <a href="https://github.com/dylanflaum08">
+    <img src="https://img.shields.io/badge/🐙_GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
 </p>
-
----
 
 <p align="center">
   <i>Thanks for stopping by the Pokémon Center.</i>

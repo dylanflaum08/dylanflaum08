@@ -53,16 +53,12 @@ text {
 }
 </style>
 
-<!-- Outer background -->
-
 <rect
     width="800"
     height="590"
     rx="26"
     fill="#7da4c7"
 />
-
-<!-- Main screen -->
 
 <rect
     x="25"
@@ -74,8 +70,6 @@ text {
     stroke="#17345e"
     stroke-width="7"
 />
-
-<!-- Header -->
 
 <rect
     x="48"
@@ -104,8 +98,6 @@ TRAINER STATS
 >
 ID No. 00023
 </text>
-
-<!-- Trainer name -->
 
 <text
     x="75"
@@ -138,8 +130,6 @@ CLASS
 >
 DEV
 </text>
-
-<!-- Stats -->
 
 <line
     x1="75"
@@ -182,8 +172,6 @@ LEVEL
 23
 </text>
 
-<!-- Languages -->
-
 <text
     x="75"
     y="330"
@@ -193,11 +181,7 @@ FAVORITE TYPES
 </text>
 
 
-        <text
-            x="105"
-            y="355"
-            class="language"
-        >
+        <text x="105" y="355" class="language">
             PYTHON
         </text>
 
@@ -227,11 +211,7 @@ FAVORITE TYPES
             28%
         </text>
         
-        <text
-            x="105"
-            y="403"
-            class="language"
-        >
+        <text x="105" y="403" class="language">
             TYPESCRIPT
         </text>
 
@@ -261,11 +241,7 @@ FAVORITE TYPES
             28%
         </text>
         
-        <text
-            x="105"
-            y="451"
-            class="language"
-        >
+        <text x="105" y="451" class="language">
             JAVA
         </text>
 
@@ -295,11 +271,7 @@ FAVORITE TYPES
             28%
         </text>
         
-        <text
-            x="105"
-            y="499"
-            class="language"
-        >
+        <text x="105" y="499" class="language">
             JUPYTER NOTEBOOK
         </text>
 
@@ -329,8 +301,6 @@ FAVORITE TYPES
             14%
         </text>
         
-
-<!-- Footer -->
 
 <rect
     x="50"

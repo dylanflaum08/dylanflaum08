@@ -52,11 +52,11 @@ PROJECTS = [
         "hp": 100,
     },
     {
-        "name": "GESTURE AUTOMATION",
-        "short": "GA",
-        "level": 41,
-        "type": "VISION / IOT",
-        "status": "ACTIVE",
+        "name": "TRUE BEARING",
+        "short": "TB",
+        "level": 42,
+        "type": "WEB / BUSINESS",
+        "status": "DEPLOYED",
         "hp": 100,
     },
     {
@@ -73,6 +73,22 @@ PROJECTS = [
         "level": 32,
         "type": "MACHINE LEARNING",
         "status": "COMPLETE",
+        "hp": 100,
+    },
+    {
+        "name": "SLOTHFUL TRADING",
+        "short": "ST",
+        "level": 44,
+        "type": "AI / TRADING",
+        "status": "ACTIVE",
+        "hp": 100,
+    },
+    {
+        "name": "GESTURE AUTOMATION",
+        "short": "GA",
+        "level": 41,
+        "type": "VISION / IOT",
+        "status": "ACTIVE",
         "hp": 100,
     },
 ]
@@ -531,60 +547,7 @@ def project_slot(project, x, y, selected=False):
     """
 
 
-def empty_slot(x, y):
-    return f"""
-    <rect
-        x="{x}"
-        y="{y}"
-        width="355"
-        height="150"
-        rx="20"
-        fill="#17345e"
-        stroke="#597c9a"
-        stroke-width="4"
-    />
-
-    <rect
-        x="{x + 8}"
-        y="{y + 8}"
-        width="339"
-        height="134"
-        rx="15"
-        fill="#305f80"
-        stroke="#477b9d"
-        stroke-width="3"
-    />
-
-    {pokeball(x + 57, y + 75)}
-
-    <text
-        x="{x + 110}"
-        y="{y + 70}"
-        class="empty-title"
-    >
-        EMPTY SLOT
-    </text>
-
-    <text
-        x="{x + 110}"
-        y="{y + 100}"
-        class="empty-text"
-    >
-        A new project may appear...
-    </text>
-    """
-
-
-# =========================================================
-# PARTY CARD
-# =========================================================
-
 def generate_party_svg():
-    party = PROJECTS[:6]
-
-    while len(party) < 6:
-        party.append(None)
-
     positions = [
         (35, 85),
         (410, 85),
@@ -596,18 +559,15 @@ def generate_party_svg():
 
     slots = ""
 
-    for index, project in enumerate(party):
+    for index, project in enumerate(PROJECTS[:6]):
         x, y = positions[index]
 
-        if project:
-            slots += project_slot(
-                project,
-                x,
-                y,
-                selected=index == 0,
-            )
-        else:
-            slots += empty_slot(x, y)
+        slots += project_slot(
+            project,
+            x,
+            y,
+            selected=index == 0,
+        )
 
     svg = f"""
 <svg
@@ -670,17 +630,6 @@ text {{
     fill: white;
 }}
 
-.empty-title {{
-    font-size: 19px;
-    font-weight: bold;
-    fill: #c0d6e4;
-}}
-
-.empty-text {{
-    font-size: 11px;
-    fill: #9db7c9;
-}}
-
 .footer {{
     font-size: 17px;
     font-weight: bold;
@@ -720,7 +669,7 @@ CURRENT PARTY
     text-anchor="end"
     class="header"
 >
-{len(PROJECTS)} / 6
+6 / 6
 </text>
 
 {slots}
@@ -775,7 +724,7 @@ CANCEL
 
 
 # =========================================================
-# TRAINER STATS CARD
+# TRAINER STATS
 # =========================================================
 
 def generate_stats_svg():
@@ -787,32 +736,27 @@ def generate_stats_svg():
         reverse=True,
     )[:4]
 
-    total_language_repos = sum(count for _, count in languages)
+    total = sum(count for _, count in languages)
 
-    if total_language_repos == 0:
+    if total == 0:
         languages = [
             ("Python", 4),
             ("TypeScript", 3),
             ("JavaScript", 2),
             ("Other", 1),
         ]
-        total_language_repos = 10
+        total = 10
 
     language_rows = ""
-
     start_y = 355
 
     for index, (language, count) in enumerate(languages):
         y = start_y + index * 48
-        percent = int((count / total_language_repos) * 100)
+        percent = int((count / total) * 100)
         bar_width = max(8, int(290 * (percent / 100)))
 
         language_rows += f"""
-        <text
-            x="105"
-            y="{y}"
-            class="language"
-        >
+        <text x="105" y="{y}" class="language">
             {escape(language.upper())}
         </text>
 
@@ -900,16 +844,12 @@ text {{
 }}
 </style>
 
-<!-- Outer background -->
-
 <rect
     width="800"
     height="590"
     rx="26"
     fill="#7da4c7"
 />
-
-<!-- Main screen -->
 
 <rect
     x="25"
@@ -921,8 +861,6 @@ text {{
     stroke="#17345e"
     stroke-width="7"
 />
-
-<!-- Header -->
 
 <rect
     x="48"
@@ -951,8 +889,6 @@ TRAINER STATS
 >
 ID No. 00023
 </text>
-
-<!-- Trainer name -->
 
 <text
     x="75"
@@ -985,8 +921,6 @@ CLASS
 >
 DEV
 </text>
-
-<!-- Stats -->
 
 <line
     x1="75"
@@ -1029,8 +963,6 @@ LEVEL
 {LEVEL}
 </text>
 
-<!-- Languages -->
-
 <text
     x="75"
     y="330"
@@ -1040,8 +972,6 @@ FAVORITE TYPES
 </text>
 
 {language_rows}
-
-<!-- Footer -->
 
 <rect
     x="50"
