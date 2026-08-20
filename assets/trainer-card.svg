@@ -1,0 +1,288 @@
+
+<svg
+    width="800"
+    height="650"
+    viewBox="0 0 800 650"
+    xmlns="http://www.w3.org/2000/svg"
+>
+
+<style>
+
+.background {
+    fill: #9bbc0f;
+}
+
+.screen {
+    fill: #8bac0f;
+    stroke: #0f380f;
+    stroke-width: 10;
+}
+
+.title {
+    font-family: monospace;
+    font-size: 36px;
+    font-weight: bold;
+    fill: #0f380f;
+}
+
+.subtitle {
+    font-family: monospace;
+    font-size: 20px;
+    fill: #0f380f;
+}
+
+.text {
+    font-family: monospace;
+    font-size: 18px;
+    fill: #0f380f;
+}
+
+.move {
+    font-family: monospace;
+    font-size: 24px;
+    font-weight: bold;
+    fill: #0f380f;
+}
+
+.power {
+    font-family: monospace;
+    font-size: 18px;
+    fill: #0f380f;
+}
+
+.small {
+    font-family: monospace;
+    font-size: 14px;
+    fill: #0f380f;
+}
+
+</style>
+
+
+<!-- Game Boy background -->
+
+<rect
+    width="800"
+    height="650"
+    rx="25"
+    class="background"
+/>
+
+
+<!-- Screen -->
+
+<rect
+    x="35"
+    y="35"
+    width="730"
+    height="580"
+    rx="10"
+    class="screen"
+/>
+
+
+<!-- Encounter -->
+
+<text
+    x="400"
+    y="90"
+    text-anchor="middle"
+    class="subtitle"
+>
+A WILD SOFTWARE ENGINEER APPEARED!
+</text>
+
+
+<!-- Trainer -->
+
+<text
+    x="100"
+    y="155"
+    class="title"
+>
+DYLAN
+</text>
+
+
+<text
+    x="100"
+    y="190"
+    class="subtitle"
+>
+SOFTWARE TRAINER
+</text>
+
+
+<!-- Level -->
+
+<text
+    x="610"
+    y="155"
+    class="subtitle"
+>
+LV. 23
+</text>
+
+
+<!-- HP label -->
+
+<text
+    x="100"
+    y="235"
+    class="text"
+>
+HP
+</text>
+
+
+<!-- HP bar background -->
+
+<rect
+    x="145"
+    y="217"
+    width="500"
+    height="22"
+    fill="#306230"
+/>
+
+
+<!-- HP bar -->
+
+<rect
+    x="150"
+    y="222"
+    width="490"
+    height="12"
+    fill="#0f380f"
+/>
+
+
+<text
+    x="660"
+    y="235"
+    class="small"
+>
+100/100
+</text>
+
+
+<!-- Types -->
+
+<text
+    x="100"
+    y="290"
+    class="text"
+>
+TYPE:
+</text>
+
+<text
+    x="180"
+    y="290"
+    class="text"
+>
+SOFTWARE / AI
+</text>
+
+
+<!-- Ability -->
+
+<text
+    x="100"
+    y="330"
+    class="text"
+>
+ABILITY: SIDE PROJECT ADDICTION
+</text>
+
+
+<!-- Divider -->
+
+<line
+    x1="100"
+    y1="345"
+    x2="700"
+    y2="345"
+    stroke="#0f380f"
+    stroke-width="4"
+/>
+
+
+<!-- Moves -->
+
+
+        <text x="105" y="370" class="move">
+            ▶ PYTHON
+        </text>
+
+        <text x="650" y="370" class="power">
+            PWR 92
+        </text>
+        
+        <text x="105" y="415" class="move">
+            ▶ TYPESCRIPT
+        </text>
+
+        <text x="650" y="415" class="power">
+            PWR 89
+        </text>
+        
+        <text x="105" y="460" class="move">
+            ▶ REACT
+        </text>
+
+        <text x="650" y="460" class="power">
+            PWR 87
+        </text>
+        
+        <text x="105" y="505" class="move">
+            ▶ AWS
+        </text>
+
+        <text x="650" y="505" class="power">
+            PWR 84
+        </text>
+        
+
+
+<!-- Current mission -->
+
+<line
+    x1="100"
+    y1="555"
+    x2="700"
+    y2="555"
+    stroke="#0f380f"
+    stroke-width="4"
+/>
+
+<text
+    x="100"
+    y="585"
+    class="text"
+>
+CURRENT QUEST:
+</text>
+
+<text
+    x="100"
+    y="610"
+    class="small"
+>
+Building unnecessarily cool software
+</text>
+
+
+<!-- Updated -->
+
+<text
+    x="700"
+    y="610"
+    text-anchor="end"
+    class="small"
+>
+UPDATED Aug 20, 2026
+</text>
+
+
+</svg>
