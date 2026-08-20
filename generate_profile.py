@@ -47,7 +47,7 @@ PROJECTS = [
         "name": "CHAIN REACTION",
         "short": "CR",
         "level": 45,
-        "type": "AI / FINANCE",
+        "type": "Web Dev/ Game"",
         "status": "ACTIVE",
         "hp": 100,
     },
