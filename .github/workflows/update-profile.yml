@@ -12,32 +12,24 @@ on:
     paths:
       - "generate_profile.py"
 
-
 permissions:
   contents: write
 
-
 jobs:
-
   update-profile:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout repository
         uses: actions/checkout@v4
-
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-
       - name: Generate Pokemon profile
         run: python generate_profile.py
-
 
       - name: Commit generated assets
         run: |
@@ -46,6 +38,7 @@ jobs:
 
           git add assets/trainer-card.svg
           git add assets/party-card.svg
+          git add assets/trainer-stats.svg
 
           git diff --cached --quiet || git commit -m "Update Pokemon profile"
 

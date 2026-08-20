@@ -1,16 +1,21 @@
 # generate_profile.py
-# Generates the Pokemon-style trainer card and Current Party card
-# displayed on my GitHub profile.
+# Generates the Pokemon-style trainer card, Current Party card,
+# and Trainer Stats card displayed on my GitHub profile.
 
 from pathlib import Path
 from datetime import datetime
 from html import escape
+import json
+import urllib.request
 
 
 OUTPUT_DIR = Path("assets")
 
 TRAINER_OUTPUT_FILE = OUTPUT_DIR / "trainer-card.svg"
 PARTY_OUTPUT_FILE = OUTPUT_DIR / "party-card.svg"
+STATS_OUTPUT_FILE = OUTPUT_DIR / "trainer-stats.svg"
+
+GITHUB_USERNAME = "dylanflaum08"
 
 
 # =========================================================
@@ -19,7 +24,6 @@ PARTY_OUTPUT_FILE = OUTPUT_DIR / "party-card.svg"
 
 TRAINER_NAME = "DYLAN"
 TRAINER_CLASS = "SOFTWARE TRAINER"
-
 LEVEL = 23
 
 CURRENT_MISSION = "Building unnecessarily cool software"
@@ -75,15 +79,71 @@ PROJECTS = [
 
 
 # =========================================================
+# GITHUB API
+# =========================================================
+
+def github_request(url):
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "pokemon-github-profile",
+            "Accept": "application/vnd.github+json",
+        },
+    )
+
+    with urllib.request.urlopen(request, timeout=15) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def fetch_github_stats():
+    stats = {
+        "repos": 0,
+        "followers": 0,
+        "following": 0,
+        "languages": {},
+    }
+
+    try:
+        user = github_request(
+            f"https://api.github.com/users/{GITHUB_USERNAME}"
+        )
+
+        stats["repos"] = user.get("public_repos", 0)
+        stats["followers"] = user.get("followers", 0)
+        stats["following"] = user.get("following", 0)
+
+        repos = github_request(
+            f"https://api.github.com/users/{GITHUB_USERNAME}/repos"
+            "?per_page=100&sort=updated"
+        )
+
+        languages = {}
+
+        for repo in repos:
+            if repo.get("fork"):
+                continue
+
+            language = repo.get("language")
+
+            if language:
+                languages[language] = languages.get(language, 0) + 1
+
+        stats["languages"] = languages
+
+    except Exception as error:
+        print(f"Could not fetch GitHub stats: {error}")
+
+    return stats
+
+
+# =========================================================
 # TRAINER CARD
 # =========================================================
 
 def generate_trainer_svg():
-    now = datetime.now()
-    updated = now.strftime("%b %d, %Y")
+    updated = datetime.now().strftime("%b %d, %Y")
 
     move_rows = ""
-
     start_y = 370
 
     for index, (move, power) in enumerate(MOVES):
@@ -108,7 +168,6 @@ def generate_trainer_svg():
 >
 
 <style>
-
 .background {{
     fill: #9bbc0f;
 }}
@@ -156,11 +215,7 @@ def generate_trainer_svg():
     font-size: 14px;
     fill: #0f380f;
 }}
-
 </style>
-
-
-<!-- Game Boy background -->
 
 <rect
     width="800"
@@ -168,9 +223,6 @@ def generate_trainer_svg():
     rx="25"
     class="background"
 />
-
-
-<!-- Screen -->
 
 <rect
     x="35"
@@ -181,9 +233,6 @@ def generate_trainer_svg():
     class="screen"
 />
 
-
-<!-- Encounter -->
-
 <text
     x="400"
     y="90"
@@ -193,9 +242,6 @@ def generate_trainer_svg():
 A WILD SOFTWARE ENGINEER APPEARED!
 </text>
 
-
-<!-- Trainer -->
-
 <text
     x="100"
     y="155"
@@ -203,7 +249,6 @@ A WILD SOFTWARE ENGINEER APPEARED!
 >
 {escape(TRAINER_NAME)}
 </text>
-
 
 <text
     x="100"
@@ -213,9 +258,6 @@ A WILD SOFTWARE ENGINEER APPEARED!
 {escape(TRAINER_CLASS)}
 </text>
 
-
-<!-- Level -->
-
 <text
     x="610"
     y="155"
@@ -223,9 +265,6 @@ A WILD SOFTWARE ENGINEER APPEARED!
 >
 LV. {LEVEL}
 </text>
-
-
-<!-- HP label -->
 
 <text
     x="100"
@@ -235,9 +274,6 @@ LV. {LEVEL}
 HP
 </text>
 
-
-<!-- HP bar background -->
-
 <rect
     x="145"
     y="217"
@@ -245,9 +281,6 @@ HP
     height="22"
     fill="#306230"
 />
-
-
-<!-- HP bar -->
 
 <rect
     x="150"
@@ -257,7 +290,6 @@ HP
     fill="#0f380f"
 />
 
-
 <text
     x="660"
     y="235"
@@ -265,9 +297,6 @@ HP
 >
 100/100
 </text>
-
-
-<!-- Types -->
 
 <text
     x="100"
@@ -285,9 +314,6 @@ TYPE:
 SOFTWARE / AI
 </text>
 
-
-<!-- Ability -->
-
 <text
     x="100"
     y="330"
@@ -295,9 +321,6 @@ SOFTWARE / AI
 >
 ABILITY: {escape(ABILITY)}
 </text>
-
-
-<!-- Divider -->
 
 <line
     x1="100"
@@ -308,13 +331,7 @@ ABILITY: {escape(ABILITY)}
     stroke-width="4"
 />
 
-
-<!-- Moves -->
-
 {move_rows}
-
-
-<!-- Current mission -->
 
 <line
     x1="100"
@@ -341,9 +358,6 @@ CURRENT QUEST:
 {escape(CURRENT_MISSION)}
 </text>
 
-
-<!-- Updated -->
-
 <text
     x="700"
     y="610"
@@ -353,22 +367,27 @@ CURRENT QUEST:
 UPDATED {escape(updated)}
 </text>
 
-
 </svg>
 """
 
     TRAINER_OUTPUT_FILE.write_text(svg, encoding="utf-8")
-
     print(f"Generated {TRAINER_OUTPUT_FILE}")
 
 
 # =========================================================
-# PARTY CARD HELPERS
+# PARTY HELPERS
 # =========================================================
 
 def pokeball(cx, cy):
     return f"""
-    <circle cx="{cx}" cy="{cy}" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="{cx}"
+        cy="{cy}"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M {cx - 29} {cy}
@@ -397,25 +416,17 @@ def pokeball(cx, cy):
 
 
 def project_slot(project, x, y, selected=False):
-    width = 355
-    height = 150
-
-    inner_x = x + 8
-    inner_y = y + 8
-
     outline = "#f5c842" if selected else "#d9f1ff"
     outline_width = 7 if selected else 4
 
     hp_width = int(180 * (project["hp"] / 100))
 
     return f"""
-    <!-- {escape(project["name"])} -->
-
     <rect
         x="{x}"
         y="{y}"
-        width="{width}"
-        height="{height}"
+        width="355"
+        height="150"
         rx="20"
         fill="#17345e"
         stroke="{outline}"
@@ -423,10 +434,10 @@ def project_slot(project, x, y, selected=False):
     />
 
     <rect
-        x="{inner_x}"
-        y="{inner_y}"
-        width="{width - 16}"
-        height="{height - 16}"
+        x="{x + 8}"
+        y="{y + 8}"
+        width="339"
+        height="134"
         rx="15"
         fill="#4c9bc7"
         stroke="#79cbe8"
@@ -569,7 +580,6 @@ def empty_slot(x, y):
 # =========================================================
 
 def generate_party_svg():
-
     party = PROJECTS[:6]
 
     while len(party) < 6:
@@ -608,7 +618,6 @@ def generate_party_svg():
 >
 
 <style>
-
 text {{
     font-family: "Courier New", monospace;
 }}
@@ -677,11 +686,7 @@ text {{
     font-weight: bold;
     fill: #17345e;
 }}
-
 </style>
-
-
-<!-- Background -->
 
 <rect
     width="800"
@@ -689,9 +694,6 @@ text {{
     rx="25"
     fill="#8aa878"
 />
-
-
-<!-- top menu -->
 
 <rect
     x="20"
@@ -718,16 +720,10 @@ CURRENT PARTY
     text-anchor="end"
     class="header"
 >
-4 / 6
+{len(PROJECTS)} / 6
 </text>
 
-
-<!-- party slots -->
-
 {slots}
-
-
-<!-- bottom command bar -->
 
 <rect
     x="35"
@@ -747,7 +743,6 @@ CURRENT PARTY
 >
 Choose a project.
 </text>
-
 
 <rect
     x="620"
@@ -772,13 +767,315 @@ Choose a project.
 CANCEL
 </text>
 
-
 </svg>
 """
 
     PARTY_OUTPUT_FILE.write_text(svg, encoding="utf-8")
-
     print(f"Generated {PARTY_OUTPUT_FILE}")
+
+
+# =========================================================
+# TRAINER STATS CARD
+# =========================================================
+
+def generate_stats_svg():
+    stats = fetch_github_stats()
+
+    languages = sorted(
+        stats["languages"].items(),
+        key=lambda item: item[1],
+        reverse=True,
+    )[:4]
+
+    total_language_repos = sum(count for _, count in languages)
+
+    if total_language_repos == 0:
+        languages = [
+            ("Python", 4),
+            ("TypeScript", 3),
+            ("JavaScript", 2),
+            ("Other", 1),
+        ]
+        total_language_repos = 10
+
+    language_rows = ""
+
+    start_y = 355
+
+    for index, (language, count) in enumerate(languages):
+        y = start_y + index * 48
+        percent = int((count / total_language_repos) * 100)
+        bar_width = max(8, int(290 * (percent / 100)))
+
+        language_rows += f"""
+        <text
+            x="105"
+            y="{y}"
+            class="language"
+        >
+            {escape(language.upper())}
+        </text>
+
+        <rect
+            x="275"
+            y="{y - 17}"
+            width="290"
+            height="18"
+            rx="6"
+            fill="#27496d"
+        />
+
+        <rect
+            x="279"
+            y="{y - 13}"
+            width="{bar_width}"
+            height="10"
+            rx="4"
+            fill="#71e36d"
+        />
+
+        <text
+            x="610"
+            y="{y}"
+            class="percentage"
+        >
+            {percent}%
+        </text>
+        """
+
+    updated = datetime.now().strftime("%b %d, %Y").upper()
+
+    svg = f"""
+<svg
+    width="800"
+    height="590"
+    viewBox="0 0 800 590"
+    xmlns="http://www.w3.org/2000/svg"
+>
+
+<style>
+text {{
+    font-family: "Courier New", monospace;
+}}
+
+.title {{
+    font-size: 27px;
+    font-weight: bold;
+    fill: #16375c;
+}}
+
+.label {{
+    font-size: 15px;
+    font-weight: bold;
+    fill: #31567c;
+}}
+
+.value {{
+    font-size: 22px;
+    font-weight: bold;
+    fill: #102f52;
+}}
+
+.language {{
+    font-size: 15px;
+    font-weight: bold;
+    fill: #17345e;
+}}
+
+.percentage {{
+    font-size: 14px;
+    font-weight: bold;
+    fill: #17345e;
+}}
+
+.small {{
+    font-size: 12px;
+    fill: #31567c;
+}}
+
+.footer {{
+    font-size: 17px;
+    font-weight: bold;
+    fill: #17345e;
+}}
+</style>
+
+<!-- Outer background -->
+
+<rect
+    width="800"
+    height="590"
+    rx="26"
+    fill="#7da4c7"
+/>
+
+<!-- Main screen -->
+
+<rect
+    x="25"
+    y="25"
+    width="750"
+    height="540"
+    rx="18"
+    fill="#d9edf5"
+    stroke="#17345e"
+    stroke-width="7"
+/>
+
+<!-- Header -->
+
+<rect
+    x="48"
+    y="48"
+    width="704"
+    height="60"
+    rx="12"
+    fill="#ffffff"
+    stroke="#6c9abd"
+    stroke-width="4"
+/>
+
+<text
+    x="75"
+    y="87"
+    class="title"
+>
+TRAINER STATS
+</text>
+
+<text
+    x="720"
+    y="87"
+    text-anchor="end"
+    class="label"
+>
+ID No. 00023
+</text>
+
+<!-- Trainer name -->
+
+<text
+    x="75"
+    y="155"
+    class="label"
+>
+TRAINER
+</text>
+
+<text
+    x="75"
+    y="185"
+    class="value"
+>
+DYLAN
+</text>
+
+<text
+    x="610"
+    y="155"
+    class="label"
+>
+CLASS
+</text>
+
+<text
+    x="610"
+    y="185"
+    class="value"
+>
+DEV
+</text>
+
+<!-- Stats -->
+
+<line
+    x1="75"
+    y1="215"
+    x2="725"
+    y2="215"
+    stroke="#6c9abd"
+    stroke-width="3"
+/>
+
+<text x="90" y="255" class="label">
+PUBLIC REPOS
+</text>
+
+<text x="300" y="255" class="value">
+{stats["repos"]}
+</text>
+
+<text x="420" y="255" class="label">
+FOLLOWERS
+</text>
+
+<text x="610" y="255" class="value">
+{stats["followers"]}
+</text>
+
+<text x="90" y="295" class="label">
+FOLLOWING
+</text>
+
+<text x="300" y="295" class="value">
+{stats["following"]}
+</text>
+
+<text x="420" y="295" class="label">
+LEVEL
+</text>
+
+<text x="610" y="295" class="value">
+{LEVEL}
+</text>
+
+<!-- Languages -->
+
+<text
+    x="75"
+    y="330"
+    class="title"
+>
+FAVORITE TYPES
+</text>
+
+{language_rows}
+
+<!-- Footer -->
+
+<rect
+    x="50"
+    y="520"
+    width="700"
+    height="30"
+    rx="8"
+    fill="#ffffff"
+    stroke="#6c9abd"
+    stroke-width="3"
+/>
+
+<text
+    x="70"
+    y="541"
+    class="footer"
+>
+★ SOFTWARE TRAINER
+</text>
+
+<text
+    x="730"
+    y="541"
+    text-anchor="end"
+    class="small"
+>
+UPDATED {updated}
+</text>
+
+</svg>
+"""
+
+    STATS_OUTPUT_FILE.write_text(svg, encoding="utf-8")
+    print(f"Generated {STATS_OUTPUT_FILE}")
 
 
 # =========================================================
@@ -786,11 +1083,11 @@ CANCEL
 # =========================================================
 
 def main():
-
     OUTPUT_DIR.mkdir(exist_ok=True)
 
     generate_trainer_svg()
     generate_party_svg()
+    generate_stats_svg()
 
 
 if __name__ == "__main__":

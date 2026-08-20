@@ -1,0 +1,363 @@
+
+<svg
+    width="800"
+    height="590"
+    viewBox="0 0 800 590"
+    xmlns="http://www.w3.org/2000/svg"
+>
+
+<style>
+text {
+    font-family: "Courier New", monospace;
+}
+
+.title {
+    font-size: 27px;
+    font-weight: bold;
+    fill: #16375c;
+}
+
+.label {
+    font-size: 15px;
+    font-weight: bold;
+    fill: #31567c;
+}
+
+.value {
+    font-size: 22px;
+    font-weight: bold;
+    fill: #102f52;
+}
+
+.language {
+    font-size: 15px;
+    font-weight: bold;
+    fill: #17345e;
+}
+
+.percentage {
+    font-size: 14px;
+    font-weight: bold;
+    fill: #17345e;
+}
+
+.small {
+    font-size: 12px;
+    fill: #31567c;
+}
+
+.footer {
+    font-size: 17px;
+    font-weight: bold;
+    fill: #17345e;
+}
+</style>
+
+<!-- Outer background -->
+
+<rect
+    width="800"
+    height="590"
+    rx="26"
+    fill="#7da4c7"
+/>
+
+<!-- Main screen -->
+
+<rect
+    x="25"
+    y="25"
+    width="750"
+    height="540"
+    rx="18"
+    fill="#d9edf5"
+    stroke="#17345e"
+    stroke-width="7"
+/>
+
+<!-- Header -->
+
+<rect
+    x="48"
+    y="48"
+    width="704"
+    height="60"
+    rx="12"
+    fill="#ffffff"
+    stroke="#6c9abd"
+    stroke-width="4"
+/>
+
+<text
+    x="75"
+    y="87"
+    class="title"
+>
+TRAINER STATS
+</text>
+
+<text
+    x="720"
+    y="87"
+    text-anchor="end"
+    class="label"
+>
+ID No. 00023
+</text>
+
+<!-- Trainer name -->
+
+<text
+    x="75"
+    y="155"
+    class="label"
+>
+TRAINER
+</text>
+
+<text
+    x="75"
+    y="185"
+    class="value"
+>
+DYLAN
+</text>
+
+<text
+    x="610"
+    y="155"
+    class="label"
+>
+CLASS
+</text>
+
+<text
+    x="610"
+    y="185"
+    class="value"
+>
+DEV
+</text>
+
+<!-- Stats -->
+
+<line
+    x1="75"
+    y1="215"
+    x2="725"
+    y2="215"
+    stroke="#6c9abd"
+    stroke-width="3"
+/>
+
+<text x="90" y="255" class="label">
+PUBLIC REPOS
+</text>
+
+<text x="300" y="255" class="value">
+9
+</text>
+
+<text x="420" y="255" class="label">
+FOLLOWERS
+</text>
+
+<text x="610" y="255" class="value">
+1
+</text>
+
+<text x="90" y="295" class="label">
+FOLLOWING
+</text>
+
+<text x="300" y="295" class="value">
+0
+</text>
+
+<text x="420" y="295" class="label">
+LEVEL
+</text>
+
+<text x="610" y="295" class="value">
+23
+</text>
+
+<!-- Languages -->
+
+<text
+    x="75"
+    y="330"
+    class="title"
+>
+FAVORITE TYPES
+</text>
+
+
+        <text
+            x="105"
+            y="355"
+            class="language"
+        >
+            PYTHON
+        </text>
+
+        <rect
+            x="275"
+            y="338"
+            width="290"
+            height="18"
+            rx="6"
+            fill="#27496d"
+        />
+
+        <rect
+            x="279"
+            y="342"
+            width="81"
+            height="10"
+            rx="4"
+            fill="#71e36d"
+        />
+
+        <text
+            x="610"
+            y="355"
+            class="percentage"
+        >
+            28%
+        </text>
+        
+        <text
+            x="105"
+            y="403"
+            class="language"
+        >
+            TYPESCRIPT
+        </text>
+
+        <rect
+            x="275"
+            y="386"
+            width="290"
+            height="18"
+            rx="6"
+            fill="#27496d"
+        />
+
+        <rect
+            x="279"
+            y="390"
+            width="81"
+            height="10"
+            rx="4"
+            fill="#71e36d"
+        />
+
+        <text
+            x="610"
+            y="403"
+            class="percentage"
+        >
+            28%
+        </text>
+        
+        <text
+            x="105"
+            y="451"
+            class="language"
+        >
+            JAVA
+        </text>
+
+        <rect
+            x="275"
+            y="434"
+            width="290"
+            height="18"
+            rx="6"
+            fill="#27496d"
+        />
+
+        <rect
+            x="279"
+            y="438"
+            width="81"
+            height="10"
+            rx="4"
+            fill="#71e36d"
+        />
+
+        <text
+            x="610"
+            y="451"
+            class="percentage"
+        >
+            28%
+        </text>
+        
+        <text
+            x="105"
+            y="499"
+            class="language"
+        >
+            JUPYTER NOTEBOOK
+        </text>
+
+        <rect
+            x="275"
+            y="482"
+            width="290"
+            height="18"
+            rx="6"
+            fill="#27496d"
+        />
+
+        <rect
+            x="279"
+            y="486"
+            width="40"
+            height="10"
+            rx="4"
+            fill="#71e36d"
+        />
+
+        <text
+            x="610"
+            y="499"
+            class="percentage"
+        >
+            14%
+        </text>
+        
+
+<!-- Footer -->
+
+<rect
+    x="50"
+    y="520"
+    width="700"
+    height="30"
+    rx="8"
+    fill="#ffffff"
+    stroke="#6c9abd"
+    stroke-width="3"
+/>
+
+<text
+    x="70"
+    y="541"
+    class="footer"
+>
+★ SOFTWARE TRAINER
+</text>
+
+<text
+    x="730"
+    y="541"
+    text-anchor="end"
+    class="small"
+>
+UPDATED AUG 20, 2026
+</text>
+
+</svg>

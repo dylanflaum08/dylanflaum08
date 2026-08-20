@@ -7,7 +7,6 @@
 >
 
 <style>
-
 .background {
     fill: #9bbc0f;
 }
@@ -55,11 +54,7 @@
     font-size: 14px;
     fill: #0f380f;
 }
-
 </style>
-
-
-<!-- Game Boy background -->
 
 <rect
     width="800"
@@ -67,9 +62,6 @@
     rx="25"
     class="background"
 />
-
-
-<!-- Screen -->
 
 <rect
     x="35"
@@ -80,9 +72,6 @@
     class="screen"
 />
 
-
-<!-- Encounter -->
-
 <text
     x="400"
     y="90"
@@ -92,9 +81,6 @@
 A WILD SOFTWARE ENGINEER APPEARED!
 </text>
 
-
-<!-- Trainer -->
-
 <text
     x="100"
     y="155"
@@ -102,7 +88,6 @@ A WILD SOFTWARE ENGINEER APPEARED!
 >
 DYLAN
 </text>
-
 
 <text
     x="100"
@@ -112,9 +97,6 @@ DYLAN
 SOFTWARE TRAINER
 </text>
 
-
-<!-- Level -->
-
 <text
     x="610"
     y="155"
@@ -122,9 +104,6 @@ SOFTWARE TRAINER
 >
 LV. 23
 </text>
-
-
-<!-- HP label -->
 
 <text
     x="100"
@@ -134,9 +113,6 @@ LV. 23
 HP
 </text>
 
-
-<!-- HP bar background -->
-
 <rect
     x="145"
     y="217"
@@ -144,9 +120,6 @@ HP
     height="22"
     fill="#306230"
 />
-
-
-<!-- HP bar -->
 
 <rect
     x="150"
@@ -156,7 +129,6 @@ HP
     fill="#0f380f"
 />
 
-
 <text
     x="660"
     y="235"
@@ -164,9 +136,6 @@ HP
 >
 100/100
 </text>
-
-
-<!-- Types -->
 
 <text
     x="100"
@@ -184,9 +153,6 @@ TYPE:
 SOFTWARE / AI
 </text>
 
-
-<!-- Ability -->
-
 <text
     x="100"
     y="330"
@@ -194,9 +160,6 @@ SOFTWARE / AI
 >
 ABILITY: SIDE PROJECT ADDICTION
 </text>
-
-
-<!-- Divider -->
 
 <line
     x1="100"
@@ -206,9 +169,6 @@ ABILITY: SIDE PROJECT ADDICTION
     stroke="#0f380f"
     stroke-width="4"
 />
-
-
-<!-- Moves -->
 
 
         <text x="105" y="370" class="move">
@@ -244,9 +204,6 @@ ABILITY: SIDE PROJECT ADDICTION
         </text>
         
 
-
-<!-- Current mission -->
-
 <line
     x1="100"
     y1="555"
@@ -272,9 +229,6 @@ CURRENT QUEST:
 Building unnecessarily cool software
 </text>
 
-
-<!-- Updated -->
-
 <text
     x="700"
     y="610"
@@ -283,6 +237,5 @@ Building unnecessarily cool software
 >
 UPDATED Aug 20, 2026
 </text>
-
 
 </svg>

@@ -7,7 +7,6 @@
 >
 
 <style>
-
 text {
     font-family: "Courier New", monospace;
 }
@@ -76,11 +75,7 @@ text {
     font-weight: bold;
     fill: #17345e;
 }
-
 </style>
-
-
-<!-- Background -->
 
 <rect
     width="800"
@@ -88,9 +83,6 @@ text {
     rx="25"
     fill="#8aa878"
 />
-
-
-<!-- top menu -->
 
 <rect
     x="20"
@@ -121,11 +113,6 @@ CURRENT PARTY
 </text>
 
 
-<!-- party slots -->
-
-
-    <!-- CHAIN REACTION -->
-
     <rect
         x="35"
         y="85"
@@ -149,7 +136,14 @@ CURRENT PARTY
     />
 
     
-    <circle cx="92" cy="157" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="92"
+        cy="157"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M 63 157
@@ -259,8 +253,6 @@ CURRENT PARTY
         100/100
     </text>
     
-    <!-- GESTURE AUTOMATION -->
-
     <rect
         x="410"
         y="85"
@@ -284,7 +276,14 @@ CURRENT PARTY
     />
 
     
-    <circle cx="467" cy="157" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="467"
+        cy="157"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M 438 157
@@ -394,8 +393,6 @@ CURRENT PARTY
         100/100
     </text>
     
-    <!-- PORTFOLIO -->
-
     <rect
         x="35"
         y="250"
@@ -419,7 +416,14 @@ CURRENT PARTY
     />
 
     
-    <circle cx="92" cy="322" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="92"
+        cy="322"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M 63 322
@@ -529,8 +533,6 @@ CURRENT PARTY
         100/100
     </text>
     
-    <!-- MOVIE PREDICTOR -->
-
     <rect
         x="410"
         y="250"
@@ -554,7 +556,14 @@ CURRENT PARTY
     />
 
     
-    <circle cx="467" cy="322" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="467"
+        cy="322"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M 438 322
@@ -687,7 +696,14 @@ CURRENT PARTY
     />
 
     
-    <circle cx="92" cy="490" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="92"
+        cy="490"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M 63 490
@@ -753,7 +769,14 @@ CURRENT PARTY
     />
 
     
-    <circle cx="467" cy="490" r="31" fill="#f5f5f5" stroke="#17345e" stroke-width="5"/>
+    <circle
+        cx="467"
+        cy="490"
+        r="31"
+        fill="#f5f5f5"
+        stroke="#17345e"
+        stroke-width="5"
+    />
 
     <path
         d="M 438 490
@@ -797,9 +820,6 @@ CURRENT PARTY
     </text>
     
 
-
-<!-- bottom command bar -->
-
 <rect
     x="35"
     y="575"
@@ -818,7 +838,6 @@ CURRENT PARTY
 >
 Choose a project.
 </text>
-
 
 <rect
     x="620"
@@ -842,6 +861,5 @@ Choose a project.
 >
 CANCEL
 </text>
-
 
 </svg>

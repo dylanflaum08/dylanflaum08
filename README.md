@@ -60,11 +60,7 @@
 ## 📊 Trainer Stats
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=dylanflaum08&show_icons=true&hide_border=true" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=dylanflaum08&layout=compact&hide_border=true" />
+  <img src="./assets/trainer-stats.svg" width="800" />
 </p>
 
 ---
