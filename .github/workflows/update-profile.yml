@@ -1,4 +1,4 @@
-name: Update Pokemon Trainer Card
+name: Update Pokemon Profile
 
 on:
   schedule:
@@ -35,17 +35,18 @@ jobs:
           python-version: "3.12"
 
 
-      - name: Generate trainer card
+      - name: Generate Pokemon profile
         run: python generate_profile.py
 
 
-      - name: Commit updated card
+      - name: Commit generated assets
         run: |
           git config user.name "pokemon-profile-bot"
           git config user.email "actions@github.com"
 
           git add assets/trainer-card.svg
+          git add assets/party-card.svg
 
-          git diff --cached --quiet || git commit -m "Update trainer card"
+          git diff --cached --quiet || git commit -m "Update Pokemon profile"
 
           git push

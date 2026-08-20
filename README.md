@@ -1,19 +1,23 @@
 # 🎮 A wild Dylan appeared!
 
 <p align="center">
-<img src="./assets/trainer-card.svg" width="800" />
+  <img src="./assets/trainer-card.svg" width="800" />
 </p>
 
 ---
 
 ## 🎒 Current Party
 
-| Pokémon | Project | Type | Status |
-|---|---|---|---|
-|  | [Chain Reaction](https://github.com/dylanflaum08/chain-reaction.git) | 🤖 AI / 📈 Finance | 🟢 Active |
-| 🏠 | [Gesture Home Automation](YOUR_HOME_AUTOMATION_LINK) | 👁️ Computer Vision / IoT | 🟢 Active |
-| 🌐 | [Portfolio](https://dyfla.com) | ⚛️ Web | 🟢 Deployed |
-| 🎬 | Movie Predictor | 🧠 ML | ✅ Completed |
+<p align="center">
+  <img src="./assets/party-card.svg" width="800" />
+</p>
+
+| Project | Type | Status |
+|---|---|---|
+| [Chain Reaction](https://github.com/dylanflaum08/chain-reaction.git) | 🤖 AI / 📈 Finance | 🟢 Active |
+| Gesture Home Automation | 👁️ Computer Vision / IoT | 🟢 Active |
+| [Portfolio](https://dyfla.com) | ⚛️ Full-Stack Web | 🟢 Deployed |
+| Movie Predictor | 🧠 Machine Learning | ✅ Completed |
 
 ---
 
@@ -49,10 +53,11 @@
 🔵 Full-Stack Development
 🟢 Automation
 🔴 Computer Vision
+```
+
+---
 
 ## 📊 Trainer Stats
-
-<!-- GitHub statistics -->
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=dylanflaum08&show_icons=true&hide_border=true" />
@@ -66,11 +71,11 @@
 
 ## 🌎 Trainer Links
 
-<!-- Portfolio / LinkedIn / etc. -->
+<p align="center">
 
-[Portfolio](https://dyfla.com)
+[🌐 Portfolio](https://dyfla.com) • [💼 LinkedIn](YOUR_LINKEDIN_URL)
 
-[LinkedIn](https://linkedin/in/dylan-flaum.com)
+</p>
 
 ---
 
